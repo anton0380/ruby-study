@@ -1,4 +1,15 @@
+##
+# Class for user information
 class User
+##
+# Output information about user
+# use parameters +name+ and +profession+
+#
+# = Example for use
+#
+#   u = User('My name', 'My profession)
+#   puts u.fio
+#   puts u.profession
   def initialize(name, profession)
     @name = name
     @profession = profession
