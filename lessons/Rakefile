@@ -1,0 +1,5 @@
+task default: :time
+
+task :time do
+  puts Time.new
+end
