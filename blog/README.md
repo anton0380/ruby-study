@@ -22,3 +22,17 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+bundle install
+RAILS_ENV=production rake db:{create,migrate,seed}
+
+in production.rb:
+comment config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+and config.assets.compile = true
+RAILS_ENV=production rails assets:precompile
+RAILS_ENV=production rails s
+----------
+stop server
+rails assets:clobber
+rails assets:precompile
+start server
