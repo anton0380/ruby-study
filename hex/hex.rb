@@ -1,4 +1,4 @@
-blocksize = 16
+BLOCK_SIZE = 16
 pos = 0
 File.open('file.hex', 'r') do |f|
   File.open('result_hex.txt', 'w') do |w|
@@ -10,8 +10,8 @@ File.open('file.hex', 'r') do |f|
         (0..((count-1)*2)).step(2) do |x|
         w.write "0x#{values[x..x+1]}, "
         pos = pos + 1
-        if pos > (blocksize - 1) then
-          w.write "\r\n"
+        if pos > (BLOCK_SIZE - 1) then
+          w.write "\r"
           pos = 0
         end
         end
