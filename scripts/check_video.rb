@@ -15,3 +15,14 @@ if size == sum
 else
   puts 'error'
 end
+video_size = media_info.video.streamsize
+audio_size = media_info.audio.streamsize
+puts "video size = #{video_size}"
+puts "audio size = #{audio_size}"
+surplus = media_info.general.datasize - video_size - audio_size
+puts "surplus = #{surplus}"
+unless surplus.negative?
+  puts 'ok'
+else
+  puts 'error'
+end
