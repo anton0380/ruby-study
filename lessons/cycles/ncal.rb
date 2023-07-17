@@ -2,22 +2,21 @@ require 'date'
 now = Time.new
 puts "\s\s\s\s#{now.strftime("%b")} #{now.year}"
 
-def month_days(month,year=Date.today.year)
+def month_days(month, year)
   mdays = [nil,31,28,31,30,31,30,31,31,30,31.30,31]
   mdays[2] = 29 if Date.leap?(year)
   mdays[month]
 end
 
-def calenar(month, year)
-  days = month_days(month, year)
-  list = *1..days
-  list = 1..days
-  p list
-end
-
+days = month_days(now.mon, now.year)
+first_wday = Date.new(now.year, now.mon, 1).wday
+nils = Array.new(6)
+list = *1..days
+all_days = nils + list
 7.times do |i|
-  puts "#{Date::DAYNAMES[i][0..1]}"
+  print "#{Date::DAYNAMES[i][0..1]}"
+  
 end
-days = month_days(2,2011)
-p days
-calenar(4,2011)
+all_days.map{|v,n| print "#{v} : #{n}!"}
+
+
