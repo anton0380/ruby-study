@@ -20,11 +20,13 @@ all_days = nils + list
       if v.nil?
         print "   "
       else
-        print " %2d" % v
+        if v == now.day
+          print " \e[7m%2d\e[27m" % v
+        else
+          print " %2d" % v
+        end
       end
     end
   end
   puts ""
 end
-
-
