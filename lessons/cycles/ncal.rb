@@ -15,8 +15,16 @@ list = *1..days
 all_days = nils + list
 7.times do |i|
   print "#{Date::DAYNAMES[i][0..1]}"
-  
+  all_days.each_with_index do |v, n|
+    if n % 7 == i
+      if v.nil?
+        print "   "
+      else
+        print " %2d" % v
+      end
+    end
+  end
+  puts ""
 end
-all_days.map{|v,n| print "#{v} : #{n}!"}
 
 
