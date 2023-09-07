@@ -1,7 +1,13 @@
 <div class="row">
     <!-- Blog entries-->
     <div class="col-lg-8">
-        <h1>Все посты</h1>
+        <h1>
+        <% if @topic == nil %>
+            Все посты
+        <% else %>
+            <%= @topic.title %>
+        <% end %>
+        </h1>
         
         <% @posts.each do |post| %>
         <!-- Featured blog post-->
