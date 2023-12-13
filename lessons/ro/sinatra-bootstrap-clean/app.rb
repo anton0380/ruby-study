@@ -11,10 +11,18 @@ get '/about' do
   erb :about
 end
 
+get '/contacts' do
+  erb :contacts
+end
+
 get '/visit' do
   erb :visit
 end
 
-get '/contacts' do
-  erb :contacts
+post '/visit' do
+  @username = params[:username]
+  @phone = params[:phone]
+  @datetime = params[:datetime]
+  @barber = params[:barber]
+  erb "OK! user name is #{@username}, #{@phone}, #{@datetime}, #{@barber}"
 end
