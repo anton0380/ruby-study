@@ -5,7 +5,9 @@ require 'sinatra/reloader'
 require 'sqlite3'
 
 def get_db
-  SQLite3::Database.new 'barbershop.db'
+  db = SQLite3::Database.new 'barbershop.db'
+  db.results_as_hash = true
+  db
 end
 
 configure do
@@ -51,4 +53,8 @@ post '/visit' do
     [@username, @phone, @datetime, @barber, @color]
 
   erb "OK! user name is #{@username}, #{@phone}, #{@datetime}, #{@barber}, #{@color}"
+end
+
+get '/showusers' do
+  erb 'Hello World'
 end
