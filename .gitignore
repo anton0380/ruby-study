@@ -3,3 +3,4 @@ hex/*.hex
 hex/*.bin
 hex/*.txt
 *.mp4
+*.sqlite
