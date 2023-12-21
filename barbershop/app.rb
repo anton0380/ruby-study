@@ -22,6 +22,10 @@ def get_db
   db
 end
 
+before do
+  @barbers = get_db.execute 'select * from Barbers'
+end
+
 configure do
   db = get_db
   db.execute 'CREATE TABLE IF NOT EXISTS "Users" (
