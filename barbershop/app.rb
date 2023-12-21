@@ -74,7 +74,7 @@ post '/visit' do
   get_db.execute 'insert into Users (username, phone, datestamp, barber, color) values (?, ?, ?, ?, ?)',
     [@username, @phone, @datetime, @barber, @color]
 
-  erb "OK! user name is #{@username}, #{@phone}, #{@datetime}, #{@barber}, #{@color}"
+  erb "<h2>Спасибо, вы записались!</h2>"
 end
 
 get '/showusers' do
