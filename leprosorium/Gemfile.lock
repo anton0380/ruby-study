@@ -24,6 +24,7 @@ GEM
       tilt (~> 2.0)
     sinatra-reloader (1.0)
       sinatra-contrib
+    sqlite3 (1.6.9-x86_64-linux)
     tilt (2.3.0)
 
 PLATFORMS
@@ -33,6 +34,7 @@ DEPENDENCIES
   puma
   sinatra
   sinatra-reloader
+  sqlite3
 
 BUNDLED WITH
    2.4.21
