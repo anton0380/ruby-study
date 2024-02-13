@@ -38,7 +38,8 @@ def check_file(file_name)
     media_info = MediaInfo.from(file_name)
     data_size = media_info.general.datasize
     video_size = media_info.video.streamsize
-    audio_size = media_info.audio.streamsize
+    # video may be without audio
+    audio_size = media_info.audio ? media_info.audio.streamsize : 0
     surplus = data_size - video_size - audio_size
     correct = !surplus.negative?
     if !correct
