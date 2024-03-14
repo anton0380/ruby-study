@@ -1,4 +1,9 @@
 class ArticlesController < ApplicationController
+
+  def show
+    @article = Article.find(params[:id])
+  end
+
   def new
   end
 
@@ -7,6 +12,7 @@ class ArticlesController < ApplicationController
 
     if @article.valid?
       @article.save
+      redirect_to @article
     else
       render action: 'new'
     end
