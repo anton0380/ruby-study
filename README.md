@@ -10,3 +10,4 @@ Study ruby language
 4. change files for instruction in command line
 5. rails g devise User
 6. rails db:migrate
+7. rails g devise:views
