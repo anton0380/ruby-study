@@ -14,3 +14,4 @@ Study ruby language
 
 ### rspec-rails
 rails g rspec:install
+rake spec
