@@ -11,3 +11,6 @@ Study ruby language
 5. rails g devise User
 6. rails db:migrate
 7. rails g devise:views
+
+### rspec-rails
+rails g rspec:install
