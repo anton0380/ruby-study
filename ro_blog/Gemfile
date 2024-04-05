@@ -9,6 +9,7 @@ group :test, :development do
   # gem 'capybara'
   gem 'shoulda-matchers'
   gem 'factory_bot_rails'
+  gem 'database_cleaner'
 end
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
