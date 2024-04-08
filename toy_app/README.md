@@ -22,3 +22,16 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+For create new application use
+```
+rails new toy_app
+bundle install
+bundle update
+```
+
+Use scaffold
+```
+rails g scaffold User name:string email:string
+bundle exec rails db:migrate
+```
