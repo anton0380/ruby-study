@@ -34,4 +34,9 @@ Use scaffold
 ```
 rails g scaffold User name:string email:string
 bundle exec rails db:migrate
+
+rails g scaffold Micropost content:text user_id:integer
+bundle exec rails db:migrate
 ```
+
+
