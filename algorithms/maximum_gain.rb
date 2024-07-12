@@ -10,36 +10,32 @@ def maximum_gain(s, x, y)
   part1, score1, part2, score2 = x > y ? ['ab', x, 'ba', y] : ['ba', y, 'ab', x]
   iter_count = 0
   loop do
+    iter_count += 1
     loop do
-      str, del_flag = del_sub(str, part1)
-      if del_flag
-        iter_count = 0
-        gain += score1
-      else
-        iter_count += 1
-        break
-      end
+      str, count = del_gsub(str, part1)
+      gain += score1 * count
+      break if count.zero?
+
+      iter_count = 0
     end
     break if iter_count > 1
 
+    iter_count += 1
     loop do
-      str, del_flag = del_sub(str, part2)
-      if del_flag
-        iter_count = 0
-        gain += score2
-      else
-        iter_count += 1
-        break
-      end
+      str, count = del_gsub(str, part2)
+      gain += score2 * count
+      break if count.zero?
+
+      iter_count = 0
     end
     break if iter_count > 1
   end
   gain
 end
 
-def del_sub(s, sub_str)
-  str = s.sub(sub_str, '')
-  [str, str != s]
+def del_gsub(s, sub_str)
+  str = s.gsub(sub_str, '')
+  [str, (s.size - str.size) / 2]
 end
 
 s = 'cdbcbbaaabab'
@@ -56,4 +52,4 @@ y = 6050
 bench = Benchmark.measure {
   puts maximum_gain(s, x, y) # 174833650
 }
-puts bench.real # 0.5665964190011437
+puts bench.real # in old algo 0.5665964190011437
