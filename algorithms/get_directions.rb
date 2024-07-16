@@ -12,7 +12,14 @@ end
 # @param {Integer} dest_value
 # @return {String}
 def get_directions(root, start_value, dest_value)
-  start_path, dest_path = check_node(root, '', nil, nil, start_value, dest_value)
+  start_path, dest_path = check_node(root, '', start_value, dest_value)
+  # for i in 0...start_path.size
+  #   if start_path[i] != dest_path[i]
+  #     start_path = start_path[i..]
+  #     dest_path = dest_path[i..]
+  #     break
+  #   end
+  # end
   new_start_path = start_path
   new_dest_path = dest_path
   chars = start_path.chars
@@ -28,18 +35,20 @@ def get_directions(root, start_value, dest_value)
   new_start_path + new_dest_path
 end
 
-def check_node(node, my_path, start_path, dest_path, start_value, dest_value)
-  new_start_path = start_path
-  new_dest_path = dest_path
-  new_start_path = my_path if node.val == start_value
-  new_dest_path = my_path if node.val == dest_value
-  if (new_start_path.nil? || new_dest_path.nil?) && !node.left.nil?
-    new_start_path, new_dest_path = check_node(node.left, my_path + 'L', new_start_path, new_dest_path, start_value, dest_value)
+def check_node(node, my_path, start_value, dest_value)
+  start_path = my_path if node.val == start_value
+  dest_path = my_path if node.val == dest_value
+  if node.left
+    s, d = check_node(node.left, my_path + 'L', start_value, dest_value)
+    start_path = s unless s.nil?
+    dest_path = d unless d.nil?
   end
-  if (new_start_path.nil? || new_dest_path.nil?) && !node.right.nil?
-    new_start_path, new_dest_path = check_node(node.right, my_path + 'R', new_start_path, new_dest_path, start_value, dest_value)
+  if node.right
+    s, d = check_node(node.right, my_path + 'R', start_value, dest_value)
+    start_path = s unless s.nil?
+    dest_path = d unless d.nil?
   end
-  [new_start_path, new_dest_path]
+  [start_path, dest_path]
 end
 
 start_value = 3
