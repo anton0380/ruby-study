@@ -26,7 +26,8 @@ end
 # @return {TreeNode[]}
 def del_nodes(root, to_delete)
   root, nodes = fun(root, to_delete)
-  result = [root]
+  result = []
+  result = [root] unless root.nil?
   result += nodes unless nodes.nil?
   result
 end
