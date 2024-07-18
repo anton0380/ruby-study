@@ -24,34 +24,37 @@ def count_pairs(root, distance)
   count / 2
 end
 
-def compare_path(leaf1, leaf2, distance)
-  dist1 = 0
-  leaf1.reverse_each do |el1|
-    dist1 += 1
-    dist2 = 0
-    leaf2.reverse_each do |el2|
-      dist2 += 1
-      if el1 == el2
-        return true if dist1 + dist2 <= distance
-
-        return false
-      end
-    end
-  end
-  false
-end
-
 def find_leaves(node, distance, leaves, path)
   if node.left.nil? && node.right.nil?
-    if path.size > distance - 1
-      leaves.push(path[(1 - distance)..])
-    else
-      leaves.push(path)
-    end
+    leaves.push(path)
   else
-    path = Array.new(path)
-    path.push(node.val)
-    find_leaves(node.left, distance, leaves, path) unless node.left.nil?
-    find_leaves(node.right, distance, leaves, path) unless node.right.nil?
+    unless node.left.nil?
+      path_left = Array.new(path)
+      path_left.push([node.val, 0])
+      find_leaves(node.left, distance, leaves, path_left)
+    end
+    unless node.right.nil?
+      path_right = Array.new(path)
+      path_right.push([node.val, 1])
+      find_leaves(node.right, distance, leaves, path_right)
+    end
   end
+end
+
+def compare_path(leaf1, leaf2, distance)
+  d = 2
+  state = 0
+  [leaf1.size, leaf2.size].max.times do |i|
+    next if state == 0 && leaf1[i] == leaf2[i]
+    if state == 0
+      unless leaf1[i].nil? || leaf2[i].nil?
+        next if leaf1[i][0] == leaf2[i][0]
+      end
+      state = 1
+    end
+    d += 1 unless leaf1[i].nil?
+    d += 1 unless leaf2[i].nil?
+    return false if d > distance
+  end
+  d <= distance
 end
