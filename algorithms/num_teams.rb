@@ -4,14 +4,17 @@ require 'benchmark'
 # @return {Integer}
 def num_teams(rating)
   result = 0
-  rating.each_with_index do |r1, i|
-    rating[i+1..].each_with_index do |r2, j|
-      rating[j+i+1..].each do |r3|
-        if r1 > r2 && r2 > r3
-          result += 1
-        elsif r3 > r2 && r2 > r1
-          result += 1
-        end
+  rating[..-3].each_with_index do |r1, i|
+    rating[i+1..-2].each_with_index do |r2, j|
+      if r1 > r2
+        rating[j+i+1..].each do |r3|
+          result += 1 if r2 > r3
+        end  
+      end
+      if r1 < r2
+        rating[j+i+1..].each do |r3|
+          result += 1 if r2 < r3
+        end  
       end
     end
   end
@@ -23,7 +26,7 @@ rating =
 bench = Benchmark.measure {
   puts num_teams rating # 9142022
 }
-puts bench.real # old 1.626948862000063 new 1.560837957998956
+puts bench.real # old 1.626948862000063 new 1.289849550999861
 
 # rating = [2,5,3,4,1] # 3
 # puts num_teams rating
