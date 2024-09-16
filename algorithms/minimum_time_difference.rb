@@ -27,6 +27,7 @@ def find_min_difference(time_points)
     times[i+1..].each do |t2|
       delta = diff(t1, t2)
       min_diff = delta if delta < min_diff
+      return 0 if min_diff.zero?
     end
   end
   min_diff
