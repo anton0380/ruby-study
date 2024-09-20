@@ -6,7 +6,7 @@ def shortest_palindrome(s)
   pos = 0
   min_len = s.size - 1
   chs = s.chars
-  chs[1...chs.size-1].each_with_index do |ch, i|
+  chs[1..(chs.size-1)/2].each_with_index do |ch, i|
     res, len = check(chs, i+1)
     if res and min_len > len
       min_len = len
@@ -16,7 +16,7 @@ def shortest_palindrome(s)
   find_double = false
   pos_double = 0
   len_double = s.size
-  chs[...chs.size-1].each_with_index do |ch, i|
+  chs[...chs.size/2].each_with_index do |ch, i|
     res, len = check_double(chs, i)
     next unless res and len_double > len
 
