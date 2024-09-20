@@ -1,24 +1,10 @@
-# README
+# AskIt
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ruby 3.2.2
+node 21.0.0
+yarn 1.22.19
 
-Things you may want to cover:
+rails new ask_it -T --css bootstrap -j webpack --skip-hotwire
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+For start AskIt use command:
+bin/dev
