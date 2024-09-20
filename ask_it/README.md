@@ -11,7 +11,14 @@ bin/dev
 
 Routes list
 http://127.0.0.1:3000/rails/info/routes
+or command rails routes
 
 If used yarn version 2+
 instead of command yarn upgrade use command yarn upgrade-interactive
 For this working need install plugin: yarn plugin import interactive-tools
+
+create database
+rails db:create RAILS_ENV=development
+rails g model Question title:string body:text
+rails db:migrate
+
