@@ -1,96 +1,76 @@
 # @param {String} s
 # @return {String}
+
 def shortest_palindrome(s)
   return s if s.size < 2
-
-  pos = 0
-  min_len = s.size - 1
   chs = s.chars
-  chs[1..(chs.size-1)/2].each_with_index do |ch, i|
-    res, len = check(chs, i+1)
-    if res and min_len > len
-      min_len = len
-      pos = i+1
+  # return s if check_palindrome(chs)
+  first_even = chs.size.even?
+  first_iteration = true
+  start = (chs.size + 1)/2
+  start.times do |i|
+    pos = start - i - 1
+    if first_iteration
+      if first_even
+        res, str = check_even(chs, pos)
+        return str if res
+        res, str = check_odd(chs, pos)
+        return str if res
+      else
+        res, str = check_odd(chs, pos)
+        return str if res
+      end
+      first_iteration = false
+      next
     end
-  end
-  find_double = false
-  pos_double = 0
-  len_double = s.size
-  chs[...chs.size/2].each_with_index do |ch, i|
-    res, len = check_double(chs, i)
-    next unless res and len_double > len
-
-    len_double = len
-    pos_double = i
-    find_double = true
-  end
-  return create_double(chs, pos_double, len_double) if find_double and len_double < min_len
-  create(chs, pos, min_len)
-end
-
-def check(chs, i)
-  min_len = [chs.size - i - 1, i].max
-  min_len.times do |j|
-    p1 = i - j - 1
-    p2 = i + j + 1
-    return [true, min_len] if p1 < 0 or p2 >= chs.size
-
-    v1 = chs[p1]
-    v2 = chs[p2]
-    return [false, 0] if v1 != v2
-  end
-  [true, min_len]
-end
-
-def check_double(chs, i)
-  return [false, 0] if chs[i] != chs[i+1]
-
-  min_len = [chs.size - i - 2, i].max
-  min_len.times do |j|
-    p1 = i - j - 1
-    p2 = i + j + 2
-    return [true, min_len] if p1 < 0 or p2 >= chs.size
-
-    v1 = chs[p1]
-    v2 = chs[p2]
-    return [false, 0] if v1 != v2
-  end
-  [true, min_len]
-end
-
-def create(chs, pos, len)
-  res = []
-  res.push chs[pos]
-  len.times do |i|
-    p1 =  pos - i - 1
-    p2 =  pos + i + 1
-    if p1.negative?
-      res.push chs[p2]
-      res.unshift chs[p2]
+    if first_even
+      res, str = check_odd(chs, pos)
+      return str if res
+      res, str = check_even(chs, pos)
+      return str if res
     else
-      res.push chs[p1]
-      res.unshift chs[p1]
+      res, str = check_even(chs, pos)
+      return str if res
+      res, str = check_odd(chs, pos)
+      return str if res
     end
   end
-  res.join
 end
 
-def create_double(chs, pos, len)
-  res = []
-  res.push chs[pos]
-  res.push chs[pos+1]
-  len.times do |i|
-    p1 =  pos - i - 1
-    p2 =  pos + i + 2
-    if p1.negative?
-      res.push chs[p2]
-      res.unshift chs[p2]
-    else
-      res.push chs[p1]
-      res.unshift chs[p1]
-    end
+def check_even(chs, pos)
+  return [false, ''] if chs[pos] != chs[pos + 1]
+  pos.times do |i|
+    p1 = pos - i - 1
+    p2 = pos + i + 2
+    return [false, ''] if chs[p1] != chs[p2]
   end
-  res.join
+  to_add = chs.size - (pos + 1) * 2
+  add_part = chs[chs.size-to_add..]
+  add_part.each do |ch|
+    chs.unshift ch
+  end
+  [true, chs.join]
+end
+
+def check_odd(chs, pos)
+  pos.times do |i|
+    p1 = pos - i - 1
+    p2 = pos + i + 1
+    return [false, ''] if chs[p1] != chs[p2]
+  end
+  to_add = chs.size - pos * 2 - 1
+  add_part = chs[chs.size-to_add..]
+  add_part.each do |ch|
+    chs.unshift ch
+  end
+  [true, chs.join]
+end
+
+def check_palindrome(chs)
+  (chs.size/2).times do |i|
+    return false if chs[i] != chs[chs.size-i-1]
+  end
+  true
 end
 
 s = "aacecaaa"
