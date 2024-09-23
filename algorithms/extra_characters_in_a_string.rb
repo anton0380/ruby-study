@@ -9,6 +9,7 @@ def min_extra_char(s, dictionary)
       i = s[start..].index(v)
       break if i.nil?
       check[start+i...start+i+v.length] = Array.new(v.length, 0)
+      # p "#{v}, #{start+i}, #{check}"
       start += i + 1
     end
   end
@@ -35,5 +36,8 @@ end
 # p min_extra_char s, dictionary # need 7
 
 s = "kevlplxozaizdhxoimmraiakbak"
-dictionary = ["yv","bmab","hv","bnsll","mra","jjqf","g","aiyzi","ip","pfctr","flr","ybbcl","biu","ke","lpl","iak","pirua","ilhqd","zdhx","fux","xaw","pdfvt","xf","t","wq","r","cgmud","aokas","xv","jf","cyys","wcaz","rvegf","ysg","xo","uwb","lw","okgk","vbmi","v","mvo","fxyx","ad","e"]
+dictionary = ["yv","bmab","hv","bnsll","mra","jjqf","g","aiyzi","ip","pfctr","flr","ybbcl","biu","ke","lpl",
+  "iak","pirua","ilhqd","zdhx","fux","xaw","pdfvt","xf","t","wq","r","cgmud","aokas","xv","jf","cyys","wcaz",
+  "rvegf","ysg","xo","uwb","lw","okgk","vbmi","v","mvo","fxyx","ad","e"]
 p min_extra_char s, dictionary # need 9
+
