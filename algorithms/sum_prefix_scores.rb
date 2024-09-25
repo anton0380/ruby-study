@@ -2,18 +2,15 @@
 # @return {Integer[]}
 def sum_prefix_scores(words)
   res = Array.new(words.size, 0)
-  sortedwords = words.sort
+  h = {}
+  words.each do |word|
+    word.size.times do |count|
+      h[word[..count]] = h[word[..count]].nil? ? 1 : h[word[..count]] + 1
+    end
+  end
   words.each_with_index do |word, i|
     word.size.times do |count|
-      find = false
-      sortedwords.each do |w|
-        if word[..count] == w[..count]
-          res[i] += 1
-          find = true
-        else
-          break if find
-        end
-      end
+      res[i] += h[word[..count]]
     end
   end
   res
