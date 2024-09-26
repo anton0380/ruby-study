@@ -22,3 +22,13 @@ rails db:create RAILS_ENV=development
 rails g model Question title:string body:text
 rails db:migrate
 
+search gem for update
+bundle outdated
+and for update
+bundle update
+add bootstrap with webpuck
+yarn add bootstrap
+update yarn
+yarn upgrade
+
+
