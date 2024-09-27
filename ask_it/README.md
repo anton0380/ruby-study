@@ -20,6 +20,7 @@ For this working need install plugin: yarn plugin import interactive-tools
 create database
 rails db:create RAILS_ENV=development
 rails g model Question title:string body:text
+rails g model Answer body:text question:belongs_to
 rails db:migrate
 
 search gem for update
