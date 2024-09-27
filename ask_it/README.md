@@ -23,9 +23,9 @@ rails g model Question title:string body:text
 rails db:migrate
 
 search gem for update
-bundle outdated
+bundle outdated (bundle out)
 and for update
-bundle update
+bundle update (bundle u)
 add bootstrap with webpuck
 yarn add bootstrap
 update yarn
