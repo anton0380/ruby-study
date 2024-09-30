@@ -35,4 +35,8 @@ yarn upgrade
 for apply seeds use
 rails db:seed
 
+for kaminagi
+rails g kaminari:config
+rails g kaminari:views default
+
 
