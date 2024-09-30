@@ -32,4 +32,7 @@ yarn add bootstrap
 update yarn
 yarn upgrade
 
+for apply seeds use
+rails db:seed
+
 
