@@ -39,4 +39,5 @@ for kaminagi
 rails g kaminari:config
 rails g kaminari:views default
 
-
+registration
+rails g model User email:string name:string password_digest:string
