@@ -45,3 +45,6 @@ rails g model User email:string name:string password_digest:string
 gem draper
 rails generate draper:install
 rails generate decorator User
+
+for drop down in nav menu
+yarn add @popperjs/core
