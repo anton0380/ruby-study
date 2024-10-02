@@ -51,3 +51,15 @@ yarn add @popperjs/core
 
 for remember user
 rails g migration add_remember_token_digest_to_users remember_token_digest:string
+
+in development group add gems
+gem 'rubocop', require: false
+gem 'rubocop-rails', require: false
+gem 'rubocop-performance', require: false
+
+add to project .rubocop.yml
+bundle exec rubocop
+aggressive mode
+bundle exec rubocop -A
+or
+bundle exec rubocop -a
