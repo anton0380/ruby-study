@@ -4,8 +4,11 @@ source 'https://rubygems.org'
 
 ruby '3.2.2'
 
+gem 'caxlsx'
+gem 'caxlsx_rails'
 gem 'draper'
 gem 'pagy'
+gem 'rubyzip'
 gem 'valid_email2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
