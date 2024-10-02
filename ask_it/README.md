@@ -48,3 +48,6 @@ rails generate decorator User
 
 for drop down in nav menu
 yarn add @popperjs/core
+
+for remember user
+rails g migration add_remember_token_digest_to_users remember_token_digest:string
