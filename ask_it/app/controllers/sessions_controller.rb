@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by email: params[:email]
     if user&.authenticate(params[:password])
-      do_sign_in
+      do_sign_in user
     else
       flash.now[:warning] = 'Incorrect email and/or password!'
       render :new
@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
 
   private
 
-  def do_sign_in
+  def do_sign_in(user)
     sign_in user
     remember(user) if params[:remember_me] == '1'
     flash[:success] = "Welcome back, #{current_user.name_or_email}!"
