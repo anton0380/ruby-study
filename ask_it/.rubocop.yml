@@ -5,3 +5,9 @@ require:
 AllCops:
   NewCops: enable
   TargetRubyVersion: 3.2.2
+
+Style/Documentation:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
+  Enabled: false

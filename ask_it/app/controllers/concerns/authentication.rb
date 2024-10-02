@@ -3,19 +3,28 @@
 module Authentication
   extend ActiveSupport::Concern
 
+  # rubocop:disable Metrics/BlockLength
   included do
     private
 
     def current_user
       if session[:user_id].present?
-        @current_user ||= User.find_by(id: session[:user_id]).decorate if session[:user_id].present?
+        user_from_session
       elsif cookies.encrypted[:user_id].present?
-        user = User.find_by(id: cookies.encrypted[:user_id])
-        if user&.remember_token_authenticated?(cookies.encrypted[:remember_token])
-          sign_in user
-          @current_user ||= user.decorate
-        end
+        user_from_token
       end
+    end
+
+    def user_from_session
+      @current_user ||= User.find_by(id: session[:user_id]).decorate if session[:user_id].present?
+    end
+
+    def user_from_token
+      user = User.find_by(id: cookies.encrypted[:user_id])
+      return unless user&.remember_token_authenticated?(cookies.encrypted[:remember_token])
+
+      sign_in user
+      @user_from_token ||= user.decorate
     end
 
     def user_signed_in?
@@ -60,4 +69,5 @@ module Authentication
 
     helper_method :current_user, :user_signed_in?
   end
+  # rubocop:enable Metrics/BlockLength
 end
