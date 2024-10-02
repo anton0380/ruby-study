@@ -63,3 +63,6 @@ aggressive mode
 bundle exec rubocop -A
 or
 bundle exec rubocop -a
+
+for stop in pry-rails use
+binding.pry
