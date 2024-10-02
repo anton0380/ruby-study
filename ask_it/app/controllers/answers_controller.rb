@@ -1,20 +1,12 @@
+# frozen_string_literal: true
+
 class AnswersController < ApplicationController
   include ActionView::RecordIdentifier
 
   before_action :set_question!
   before_action :set_answer!, except: :create
 
-  def edit
-  end
-
-  def update
-    if @answer.update answer_params
-      flash[:success] = 'Answer updated!'
-      redirect_to question_path(@question, anchor: dom_id(@answer))
-    else
-      render :edit
-    end
-  end
+  def edit; end
 
   def create
     @answer = @question.answers.build answer_params
@@ -24,6 +16,15 @@ class AnswersController < ApplicationController
     else
       @answers = @question.answers.order created_at: :desc
       render 'questions/show'
+    end
+  end
+
+  def update
+    if @answer.update answer_params
+      flash[:success] = 'Answer updated!'
+      redirect_to question_path(@question, anchor: dom_id(@answer))
+    else
+      render :edit
     end
   end
 

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class QuestionsController < ApplicationController
-  before_action :set_question!, only: %i[show destroy edit update] 
+  before_action :set_question!, only: %i[show destroy edit update]
   def index
     @pagy, @questions = pagy Question.order(created_at: :desc)
     @questions = @questions.decorate
@@ -16,6 +18,8 @@ class QuestionsController < ApplicationController
     @question = Question.new
   end
 
+  def edit; end
+
   def create
     @question = Question.new question_params
     if @question.save
@@ -24,9 +28,6 @@ class QuestionsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def edit
   end
 
   def update
