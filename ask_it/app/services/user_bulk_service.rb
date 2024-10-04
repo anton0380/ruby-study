@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserBulkService < ApplicationService
   attr_reader :archive
 
@@ -20,9 +22,9 @@ class UserBulkService < ApplicationService
     sheet.map do |row|
       cells = row.cells
       User.new name: cells[0]&.value.to_s,
-                email: cells[1]&.value.to_s,
-                password: cells[2]&.value.to_s,
-                password_confirmation: cells[2]&.value.to_s
+               email: cells[1]&.value.to_s,
+               password: cells[2]&.value.to_s,
+               password_confirmation: cells[2]&.value.to_s
     end
   end
 end
