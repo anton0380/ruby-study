@@ -11,6 +11,7 @@ gem 'draper'
 gem 'pagy'
 gem 'rubyXL'
 gem 'rubyzip'
+gem 'rails-i18n'
 # gem 'valid_email2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
