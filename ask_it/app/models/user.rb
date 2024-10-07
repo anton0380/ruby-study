@@ -1,5 +1,13 @@
 # frozen_string_literal: true
 
+class EmailValidator < ActiveModel::EachValidator
+  def validate_each(record, attribute, value)
+    unless value =~ URI::MailTo::EMAIL_REGEXP
+      record.errors.add attribute, (options[:message] || 'is not an email')
+    end
+  end
+end
+
 class User < ApplicationRecord
   attr_accessor :old_password, :remember_token
 
@@ -9,7 +17,7 @@ class User < ApplicationRecord
   validate :correct_old_password, on: :update, if: -> { password.present? }
   validates :password, confirmation: true, allow_blank: true, length: { minimum: 8, maximum: 70 }
 
-  validates :email, presence: true, uniqueness: true, 'valid_email_2/email': true
+  validates :email, presence: true, uniqueness: true, email: true
 
   validate :password_complexity
 
