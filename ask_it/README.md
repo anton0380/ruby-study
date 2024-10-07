@@ -66,3 +66,6 @@ bundle exec rubocop -a
 
 for stop in pry-rails use
 binding.pry
+
+esbuild
+rails javascript:install:esbuild
