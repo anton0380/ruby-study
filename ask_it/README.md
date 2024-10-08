@@ -78,3 +78,4 @@ migrations
 rails g migration add_user_id_to_answers user:belongs_to
 rails g migration add_user_id_to_questions user:belongs_to
 rails g migration remove_default_user_id_from_questions_answers
+rails g migration add_gravatar_hash_to_users gravatar_hash
