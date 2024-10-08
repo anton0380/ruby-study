@@ -1,17 +1,12 @@
 # frozen_string_literal: true
 
-class EmailValidator < ActiveModel::EachValidator
-  def validate_each(record, attribute, value)
-    unless value =~ URI::MailTo::EMAIL_REGEXP
-      record.errors.add attribute, (options[:message] || 'is not an email')
-    end
-  end
-end
-
 class User < ApplicationRecord
   attr_accessor :old_password, :remember_token
 
   has_secure_password validations: false
+
+  has_many :qestions, dependent: :destroy
+  has_many :answers, dependent: :destroy
 
   validate :password_presence
   validate :correct_old_password, on: :update, if: -> { password.present? }
