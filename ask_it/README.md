@@ -69,3 +69,7 @@ binding.pry
 
 esbuild
 rails javascript:install:esbuild
+
+lokalise rails
+rails g lokalise_rails:install
+rails lokalise_rails:export
