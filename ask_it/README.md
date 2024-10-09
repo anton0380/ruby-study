@@ -64,18 +64,22 @@ bundle exec rubocop -A
 or
 bundle exec rubocop -a
 
-for stop in pry-rails use
+## pry-rails
+For stop in pry-rails use
 binding.pry
 
-esbuild
+## Esbuild
 rails javascript:install:esbuild
 
-lokalise rails
+## Lokalise rails
 rails g lokalise_rails:install
 rails lokalise_rails:export
 
-migrations
+## Migrations
 rails g migration add_user_id_to_answers user:belongs_to
 rails g migration add_user_id_to_questions user:belongs_to
 rails g migration remove_default_user_id_from_questions_answers
 rails g migration add_gravatar_hash_to_users gravatar_hash
+
+## Comments
+rails g model Comment body:string commentable:references{polymorphic} user:belongs_to
