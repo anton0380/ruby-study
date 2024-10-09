@@ -83,3 +83,7 @@ rails g migration add_gravatar_hash_to_users gravatar_hash
 
 ## Comments
 rails g model Comment body:string commentable:references{polymorphic} user:belongs_to
+
+## Bullet
+bundle exec rails g bullet:install
+Would you like to enable bullet in test environment? (y/n) n

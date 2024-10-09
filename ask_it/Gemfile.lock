@@ -91,6 +91,9 @@ GEM
     bootsnap (1.18.4)
       msgpack (~> 1.2)
     builder (3.3.0)
+    bullet (7.2.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     caxlsx (4.1.0)
       htmlentities (~> 4.3, >= 4.3.4)
       marcel (~> 1.0)
@@ -315,6 +318,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.6.0)
+    uniform_notifier (1.16.0)
     uri (0.13.1)
     web-console (4.2.1)
       actionview (>= 6.0.0)
@@ -348,6 +352,7 @@ DEPENDENCIES
   activerecord-import
   bcrypt (~> 3.1.7)
   bootsnap
+  bullet
   caxlsx
   caxlsx_rails
   cssbundling-rails
