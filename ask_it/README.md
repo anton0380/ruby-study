@@ -87,3 +87,7 @@ rails g model Comment body:string commentable:references{polymorphic} user:belon
 ## Bullet
 bundle exec rails g bullet:install
 Would you like to enable bullet in test environment? (y/n) n
+
+## Tags
+rails g model Tag title:string
+rails g model QuestionTag question:belongs_to tag:belongs_to
