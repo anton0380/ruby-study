@@ -6,7 +6,7 @@ class QuestionsController < ApplicationController
   before_action :fetch_tags, only: %i[new edit]
 
   def index
-    @pagy, @questions = pagy Question.includes([:user, :question_tags, :tags]).order(created_at: :desc)
+    @pagy, @questions = pagy Question.all_by_tags(params[:tag_ids])
     @questions = @questions.decorate
   end
 
