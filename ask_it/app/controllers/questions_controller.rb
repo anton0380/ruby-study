@@ -6,6 +6,7 @@ class QuestionsController < ApplicationController
   before_action :fetch_tags, only: %i[new edit]
 
   def index
+    @tags = Tag.all # Tag.where(id: params[:tag_ids]) if params[:tag_ids]
     @pagy, @questions = pagy Question.all_by_tags(params[:tag_ids])
     @questions = @questions.decorate
   end

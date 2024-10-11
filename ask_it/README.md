@@ -93,3 +93,5 @@ rails g model Tag title:string
 rails g model QuestionTag question:belongs_to tag:belongs_to
 yarn add select2 jquery
 yarn add select2-bootstrap-5-theme
+yarn remove select2-bootstrap-5-theme select2 jquery
+yarn add tom-select

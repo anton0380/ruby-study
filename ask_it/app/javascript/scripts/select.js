@@ -1,62 +1,55 @@
-import $ from 'jquery'
-import 'select2/dist/js/select2'
-import * as Select2Ru from 'select2/src/js/select2/i18n/ru'
-import * as Select2En from 'select2/src/js/select2/i18n/en'
+import TomSelect from 'tom-select/dist/js/tom-select.popular'
+import Translations from './i18n/select.json'
 
-const select2_langs = {
-  ru: Select2Ru,
-  en: Select2En
-}
+let selects = []
 
-$(document).on("turbolinks:before-cache", function() {
-  $('.js-multiple-select').each(function () {
-    $(this).select2('destroy');
+document.addEventListener("turbo:before-cache", function() {
+  selects.forEach((select) => {
+    select.destroy()
   })
 })
 
+const rerender = function() {
+  const i18n = Translations[document.querySelector('body').dataset.lang]
 
-$(document).on("turbolinks:load", function() {
-  $('.js-multiple-select').each(function () {
-    const $this = $(this)
-
-    let opts = {
-      theme: 'bootstrap-5',
-      width: $this.data("width") ? $this.data("width") : $this.hasClass("w-100") ? "100%" : "style",
-      placeholder: $this.data("placeholder"),
-      allowClear: Boolean($this.data("allow-clear")),
-      language: select2_langs[$('body').data('lang')]
-    }
-
-    if($this.hasClass('js-ajax-select')) {
-      const ajax_opts = {
-        ajax: {
-          url: $this.data('ajax-url'),
-          data: function (params) {
-            return {
-              term: params.term
-            }
+  document.querySelectorAll('select.js-multiple-select').forEach((element) => {
+    if(!element.classList.contains('tomselected')) {
+      let opts = {
+        plugins: {
+          'remove_button': {
+            title: i18n['remove_button']
           },
-          dataType: 'json',
-          delay: 1000,
-          processResults: function (data, params) {
-            const arr = $.map(data, function(value, index){
-              return {
-                id: value.id,
-                text: value.title
-              }
-            })
-            return {
-              results: arr
-            }
-          },
-          cache: true
+          'no_backspace_delete': {},
+          'restore_on_backspace': {}
         },
-        minimumInputLength: 2
+        valueField: 'id',
+        labelField: 'title',
+        searchField: 'title',
+        create: false,
+        load: function(query, callback) {
+          const url = element.dataset.ajaxUrl + '.json?term=' + encodeURIComponent(query)
+
+          fetch(url)
+            .then(response => response.json())
+            .then (json => {
+              callback(json)
+            }).catch(() => {
+              callback()
+            })
+        },
+        render: {
+          no_results: function(_data, _escape){
+            return '<div class="no-results">' + i18n['no_results'] + '</div>';
+          }
+        }
       }
 
-      opts = Object.assign(opts, ajax_opts)
+      const el = new TomSelect(element, opts)
+      selects.push(el)
     }
-
-    $this.select2(opts)
   })
-})
+}
+
+document.addEventListener("turbo:load", rerender)
+document.addEventListener("turbo:frame-render", rerender)
+document.addEventListener("turbo:render", rerender)
