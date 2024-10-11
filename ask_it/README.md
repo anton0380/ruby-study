@@ -91,3 +91,5 @@ Would you like to enable bullet in test environment? (y/n) n
 ## Tags
 rails g model Tag title:string
 rails g model QuestionTag question:belongs_to tag:belongs_to
+yarn add select2 jquery
+yarn add select2-bootstrap-5-theme
