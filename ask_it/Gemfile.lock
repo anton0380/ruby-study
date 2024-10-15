@@ -88,6 +88,7 @@ GEM
     bcrypt (3.1.20)
     bigdecimal (3.1.8)
     bindex (0.8.1)
+    blueprinter (1.1.2)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
     builder (3.3.0)
@@ -351,6 +352,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-import
   bcrypt (~> 3.1.7)
+  blueprinter
   bootsnap
   bullet
   caxlsx
