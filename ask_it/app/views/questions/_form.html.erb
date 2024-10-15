@@ -29,7 +29,7 @@
       <%= f.collection_select :tag_ids, question.tags, :id, :title, {}, multiple: true,
         class: 'js-multiple-select js-ajax-select w-100', data: {'ajax-url': '/api/tags'} %>
     </div>
-  </div>
+  </div>  
 
   <%= f.submit 'Submit question!', class: 'btn btn-primary' %>
 <% end %>
