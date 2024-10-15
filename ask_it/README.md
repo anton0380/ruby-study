@@ -95,3 +95,6 @@ yarn add select2 jquery
 yarn add select2-bootstrap-5-theme
 yarn remove select2-bootstrap-5-theme select2 jquery
 yarn add tom-select
+
+## Roles
+rails g migration add_role_to_users role:integer

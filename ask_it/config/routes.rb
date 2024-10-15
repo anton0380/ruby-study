@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   concern :commentable do
-    resources :comments, only: %i[create destroy]  
+    resources :comments, only: %i[create destroy]
   end
 
   namespace :api do
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resources :answers, except: %i[new show], concerns: :commentable
 
     namespace :admin do
-      resources :users, only: %i[index create]
+      resources :users, only: %i[index create edit update destroy]
     end
 
     root 'pages#index'

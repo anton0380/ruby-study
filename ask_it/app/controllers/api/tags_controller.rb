@@ -3,7 +3,6 @@ module Api
     def index
       tags = Tag.arel_table
       @tags = Tag.where(tags[:title].matches("%#{params[:term]}%"))
-      p '!!!!!!!!!!!'
       # respond_to do |format|
       #   format.json
       # end
