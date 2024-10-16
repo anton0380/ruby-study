@@ -98,3 +98,6 @@ yarn add tom-select
 
 ## Roles
 rails g migration add_role_to_users role:integer
+
+## Pundit
+rails g pundit:install
