@@ -7,6 +7,8 @@ en:
         basic: Basic
         moderator: Moderator
         admin: Admin
+    flash:
+      not_authorized: 'You are not authorized to perform this action!'
   activerecord:
     models:
       question: Question

@@ -7,6 +7,8 @@ ru:
         basic: Базовый
         moderator: Модератор
         admin: Админ
+    flash:
+      not_authorized: 'У вас нет прав на выполнение этого действия!'
   activerecord:
     models:
       question: Вопрос

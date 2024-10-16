@@ -2,7 +2,10 @@
 
 class QuestionsController < ApplicationController
   include QuestionsAnswers
+  before_action :require_authentication, except: %i[show index]
   before_action :set_question!, only: %i[show destroy edit update]
+  before_action :authorize_question!
+  after_action :verify_authorized
 
   def index
     @tags = Tag.where(id: params[:tag_ids]) if params[:tag_ids]
@@ -53,5 +56,9 @@ class QuestionsController < ApplicationController
 
   def set_question!
     @question = Question.find params[:id]
+  end
+
+  def authorize_question!
+    authorize(@question || Question)
   end
 end
