@@ -1,6 +1,12 @@
 en:
   en: English
   ru: Russian
+  global:
+    user:
+      roles:
+        basic: Basic
+        moderator: Moderator
+        admin: Admin
   activerecord:
     models:
       question: Question
