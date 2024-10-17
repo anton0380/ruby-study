@@ -5,6 +5,8 @@ ru:
     reset_email:
       subject: 'Сброс пароля | AskIt'  
   password_resets:
+    create:
+      success: Инструкции были отправлены на ваш адрес.
     new:
       title: Сбросить пароль
       form:
