@@ -1,6 +1,17 @@
 en:
   en: English
   ru: Russian
+  password_resets:
+    new:
+      title: Reset password
+      form:
+        email: Email
+        submit: Send reset instructions
+        back: Back to sign in
+  sessions:
+    new:
+      form:
+        forgot_password: I forgot my password
   global:
     user:
       roles:
@@ -21,6 +32,7 @@ en:
       title: 'Welcometo AskIt!'
   menu:
     home: 'Home'
+    log_in: Log In    
   questions:
     destroy:
       success: 'Question deleted!'
