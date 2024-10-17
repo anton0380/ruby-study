@@ -1,10 +1,18 @@
 en:
   en: English
   ru: Russian
+  activerecord:
+    attributes:
+      user:
+        password: Password
+        password_confirmation: Password confirmation
+    models:
+      question: Question
   password_reset_mailer:
     reset_email:
       subject: 'Password reset | AskIt'
   password_resets:
+    fail: Could not reset your password...
     create:
       success: Password reset instructions were sent to your email address.
     new:
@@ -13,6 +21,10 @@ en:
         email: Email
         submit: Send reset instructions
         back: Back to sign in
+    edit:
+      title: Enter new password
+      form:
+        submit: Reset my password!        
   sessions:
     new:
       form:
