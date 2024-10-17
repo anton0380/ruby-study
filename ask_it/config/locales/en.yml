@@ -24,7 +24,9 @@ en:
     edit:
       title: Enter new password
       form:
-        submit: Reset my password!        
+        submit: Reset my password!
+    update:
+      success: Your password was reset!
   sessions:
     new:
       form:
