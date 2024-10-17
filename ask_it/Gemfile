@@ -17,6 +17,7 @@ gem 'dotenv-rails'
 # gem 'valid_email2'
 gem 'blueprinter'
 gem 'pundit'
+gem 'letter_opener'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.4'
