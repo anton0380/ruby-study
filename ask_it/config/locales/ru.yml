@@ -1,6 +1,9 @@
 ru:
   en: Английский
   ru: Русский
+  password_reset_mailer:
+    reset_email:
+      subject: 'Сброс пароля | AskIt'  
   password_resets:
     new:
       title: Сбросить пароль
