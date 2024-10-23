@@ -13,7 +13,11 @@ module Admin
           @pagy, @users = pagy User.order(created_at: :desc)
         end
 
-        format.zip { respond_with_zipped_users }
+        format.zip do
+          UserBulkExportJob.perform_later current_user
+          flash[:success] = 'The task is going!'
+          redirect_to admin_users_path
+        end
       end
     end
 
@@ -51,22 +55,6 @@ module Admin
       result = ActiveStorage::Blob.create_and_upload! io: file, filename: params[:archive].original_filename
       file.close
       result.key
-    end
-
-    def respond_with_zipped_users
-      compressed_filestream = Zip::OutputStream.write_buffer do |zos|
-        User.order(created_at: :desc).each do |user|
-          zos.put_next_entry "user_#{user.id}.xlsx"
-          zos.print render_to_string(
-            layout: false, handlers: [:axlsx], formats: [:xlsx],
-            template: 'admin/users/user',
-            locals: { user: }
-          )
-        end
-      end
-
-      compressed_filestream.rewind
-      send_data compressed_filestream.read, filename: 'users.zip'
     end
 
     def set_user!
