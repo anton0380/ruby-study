@@ -106,5 +106,10 @@ rails g pundit:install
 rails g migration add_password_reset_token_and_password_reset_token_sent_at_to_users password_reset_token:string:index password_reset_token_sent_at:datetime
 
 ## Sidekiq
-
 bundle exec sidekiq -q default
+
+## ActiveStorage
+
+rails active_storage:install
+rails db:migrate
+
