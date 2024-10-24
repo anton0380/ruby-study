@@ -14,8 +14,8 @@
     "watch:css": "nodemon --watch ./app/assets/stylesheets/ --ext scss --exec \"yarn build:css\""
   },
   "dependencies": {
+    "@hotwired/turbo-rails": "^8.0.12",
     "@popperjs/core": "^2.11.8",
-    "@rails/ujs": "^6.0.0",
     "autoprefixer": "^10.4.20",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
@@ -23,8 +23,7 @@
     "postcss": "^8.4.47",
     "postcss-cli": "^11.0.0",
     "sass": "^1.79.2",
-    "tom-select": "^2.3.1",
-    "turbolinks": "^5.2.0"
+    "tom-select": "^2.3.1"
   },
   "browserslist": [
     "defaults"

@@ -23,7 +23,7 @@
         <% end %>
         <% if policy(answer).destroy? %>
           <%= link_to 'Delete', question_answer_path(question, answer), class: 'btn btn-danger btn-sm',
-            data: {method: :delete, confirm: t('Are you sure?')} %>
+            data: {turbo_method: :delete, turbo_confirm: t('Are you sure?')} %>
         <% end %>
       </div>
     </div>

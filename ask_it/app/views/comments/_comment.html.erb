@@ -15,7 +15,7 @@
               <%= link_to 'Delete',
                 polymorphic_path([comment.commentable, comment]),
                 class: 'btn btn-danger btn-sm',
-                data: {method: :delete, confirm: 'You are sure?'} %>
+                data: {turbo_method: :delete, turbo_confirm: 'You are sure?'} %>
             <% end %>
           </div>
         </section>

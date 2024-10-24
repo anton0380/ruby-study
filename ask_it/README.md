@@ -113,3 +113,7 @@ bundle exec sidekiq -q default
 rails active_storage:install
 rails db:migrate
 
+## Turbo
+
+rails turbo:install
+
