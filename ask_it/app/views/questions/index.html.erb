@@ -26,10 +26,12 @@
   </div>
 <% end %>
 
-<%= pagination @pagy %>
+<%= turbo_frame_tag 'pagination_pagy' do %>
+  <%= pagination @pagy %>
 
-<%= turbo_frame_tag 'questions' do %>
-  <%= render @questions %>
+  <%= turbo_frame_tag 'questions' do %>
+    <%= render @questions %>
+  <% end %>
+
+  <%= pagination @pagy %>
 <% end %>
-
-<%= pagination @pagy %>

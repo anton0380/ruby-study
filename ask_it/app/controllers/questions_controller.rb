@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
 
   def index
     @tags = Tag.where(id: params[:tag_ids]) if params[:tag_ids]
-    @pagy, @questions = pagy Question.all_by_tags(@tags)
+    @pagy, @questions = pagy Question.all_by_tags(@tags), link_extra: 'data-turbo-frame="pagination_pagy"'
     @questions = @questions.decorate
   end
 

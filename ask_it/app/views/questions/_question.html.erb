@@ -6,7 +6,10 @@
     </section>
 
     <div class="card-body">
-      <h4><%= question.title %></h4>
+      <h4>
+        <%= link_to question.title, question_path(question),
+        data: {turbo_frame: '_top'} %>
+      </h4>
 
       <section class="card-text">
         <time datetime="<%= question.formatted_created_at %>">
