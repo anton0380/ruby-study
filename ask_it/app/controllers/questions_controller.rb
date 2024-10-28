@@ -43,8 +43,16 @@ class QuestionsController < ApplicationController
 
   def update
     if @question.update question_params
-      flash[:success] = 'Question updated!'
-      redirect_to questions_path
+      respond_to do |format|
+        format.html do
+          flash[:success] = 'Question updated!'
+          redirect_to questions_path
+        end
+        format.turbo_stream do
+          @question = @question.decorate
+          flash.now[:success] = 'Question updated!'
+        end
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -52,8 +60,13 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    flash[:success] = t('.success')
-    redirect_to questions_path, status: 303
+    respond_to do |format|
+      format.html do
+        flash[:success] = t('.success')
+        redirect_to questions_path, status: :see_other
+      end
+      format.turbo_stream { flash.now[:success] = t('.success') }
+    end
   end
 
   private
