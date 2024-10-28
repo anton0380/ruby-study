@@ -28,6 +28,8 @@
 
 <%= pagination @pagy %>
 
-<%= render @questions %>
+<%= turbo_frame_tag 'questions' do %>
+  <%= render @questions %>
+<% end %>
 
 <%= pagination @pagy %>
