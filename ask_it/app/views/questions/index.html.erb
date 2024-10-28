@@ -18,7 +18,12 @@
 </section>
 
 <% if policy(:question).new? %>
-  <%= link_to 'New question', new_question_path, class: 'btn btn-primary btn-lg mb-3' %>
+  <%= link_to 'New question', new_question_path, 
+    class: 'btn btn-primary btn-lg mb-3', 
+    data: { turbo_frame: dom_id(Question.new) } %>
+  <div class="my-3">
+    <%= turbo_frame_tag Question.new %>
+  </div>
 <% end %>
 
 <%= pagination @pagy %>
