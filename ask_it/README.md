@@ -117,3 +117,8 @@ rails db:migrate
 
 rails turbo:install
 
+## Optimistic locking
+
+rails g model Item title lock_version:integer
+
+## Pessimistic locking
