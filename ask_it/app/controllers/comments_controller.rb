@@ -24,10 +24,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    comment = @commentable.comments.find params[:id]
-    authorize comment
+    @comment = @commentable.comments.find params[:id]
+    authorize @comment
 
-    comment.destroy
+    @comment.destroy
     respond_to do |format|
       format.html do
         flash[:success] = 'Comment deleted!'
