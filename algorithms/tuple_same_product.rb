@@ -9,7 +9,7 @@ def tuple_same_product(nums)
   len = nums.length
   (0...len).each do |i1|
     (i1+1...len).each do |i2|
-      (0...len).each do |i3|
+      (i1+1...len).each do |i3|
         (i3+1...len).each do |i4|
           nested = [nums[i1], nums[i2], nums[i3], nums[i4]]
           if nested.uniq.length == 4
@@ -21,7 +21,7 @@ def tuple_same_product(nums)
       end
     end
   end
-  arr.length * 4
+  arr.length * 8
 end
 
 # Example 1:
@@ -57,4 +57,4 @@ bench = Benchmark.measure {
   p tuple_same_product nums
 }
 # 480
-puts bench.real # here 8.712097330997494
+puts bench.real # here 4.428974579997885
