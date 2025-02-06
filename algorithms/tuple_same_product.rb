@@ -5,7 +5,7 @@ require 'benchmark'
 # @param {Integer[]} nums
 # @return {Integer}
 def tuple_same_product(nums)
-  arr = []
+  count = 0
   len = nums.length
   (0...len).each do |i1|
     (i1+1...len).each do |i2|
@@ -14,14 +14,14 @@ def tuple_same_product(nums)
           nested = [nums[i1], nums[i2], nums[i3], nums[i4]]
           if nested.uniq.length == 4
             if nested[0] * nested[1] == nested[2] * nested[3]
-              arr.push(nested)
+              count += 1
             end
           end
         end
       end
     end
   end
-  arr.length * 8
+  count * 8
 end
 
 # Example 1:
@@ -57,4 +57,4 @@ bench = Benchmark.measure {
   p tuple_same_product nums
 }
 # 480
-puts bench.real # here 4.428974579997885
+puts bench.real # here 4.305735590998665
