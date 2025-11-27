@@ -49,4 +49,4 @@ k = 2
 bench = Benchmark.measure {
   puts max_subarray_sum nums, k
 }
-puts bench.real
+puts bench.real # here 185.02633826099918
